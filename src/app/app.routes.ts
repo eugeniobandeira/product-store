@@ -5,10 +5,14 @@ import { CreateComponent } from './features/create/create.component';
 export const routes: Routes = [
     {
         path: '',
-        component: ListComponent
+        loadComponent: () => 
+            import('./features/list/list.component')
+            .then(m => m.ListComponent)
     },
     {
         path: 'create-product',
-        component: CreateComponent
+        loadComponent: () => 
+            import('./features/create/create.component')
+            .then(m => m.CreateComponent)
     },
 ];
