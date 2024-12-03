@@ -13,7 +13,7 @@ export class ProductsService {
   constructor() { }
 
   getAll() {
-    return this.httpClient.get<IProduct[]>('/api/products')
+    return this.httpClient.get<IProduct[]>('/api/products');
   }
 
   getById(id: string) {
@@ -21,10 +21,14 @@ export class ProductsService {
   }
 
   post(payload: IProductPayload) {
-    return this.httpClient.post('/api/products', payload)
+    return this.httpClient.post('/api/products', payload);
   }
 
   put(id: string, payload: IProductPayload) {
-    return this.httpClient.put(`/api/products/${id}`, payload)
+    return this.httpClient.put(`/api/products/${id}`, payload);
+  }
+
+  delete(id: string) {
+    return this.httpClient.delete(`/api/products/${id}`);
   }
 }

@@ -1,10 +1,6 @@
 {
   "products": [
     {
-      "title": "Produto de Teste editado 888",
-      "id": "1"
-    },
-    {
       "id": "30ea",
       "title": "eugenio"
     },
@@ -15,14 +11,6 @@
     {
       "id": "8b1c",
       "title": "tenis"
-    },
-    {
-      "id": "1ea1",
-      "title": "sapato"
-    },
-    {
-      "id": "ada5",
-      "title": "sasasa"
     }
   ]
 }
