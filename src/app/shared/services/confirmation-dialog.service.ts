@@ -14,8 +14,8 @@ import { Observable } from 'rxjs';
     <h2 mat-dialog-title>Deletar Produto</h2>
     <mat-dialog-content>Tem certeza que quer deletar esse produto?</mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-button (click)="onNo()">Não</button>
-      <button mat-button color="warn" (click)="onYes()" cdkFocusInitial>Sim</button>
+      <button mat-raised-button (click)="onNo()">Não</button>
+      <button mat-raised-button color="warn" (click)="onYes()" cdkFocusInitial>Sim</button>
     </mat-dialog-actions>
   `,
 })
