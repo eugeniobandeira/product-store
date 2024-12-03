@@ -1,8 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ProductsService } from '../../shared/services/products.service';
 import { IProduct } from '../../shared/interfaces/product.interface';
 import { CardComponent } from './components/card/card.component';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { filter } from 'rxjs';
 import { ConfirmationDialogService } from '../../shared/services/confirmation-dialog.service';
@@ -15,17 +15,11 @@ import { ConfirmationDialogService } from '../../shared/services/confirmation-di
   styleUrl: './list.component.scss',
 })
 export class ListComponent {
-  products: IProduct[] = [];
+  products = signal<IProduct[]>(inject(ActivatedRoute).snapshot.data['products']);
 
   productService = inject(ProductsService);
   router = inject(Router);
   confirmationService = inject(ConfirmationDialogService);
-
-  ngOnInit(): void {
-    this.productService.getAll().subscribe((products) => {
-      this.products = products;
-    });
-  }
 
   onEdit(product: IProduct): void {
     this.router.navigate(['/edit-product', product.id]);
@@ -38,9 +32,11 @@ export class ListComponent {
       .subscribe(() => {
         this.productService.delete(product.id).subscribe(() => {
           this.productService.getAll().subscribe((products) => {
-            this.products = products;
+            this.products.set(products);
           });
         });
     });
   }
 }
+
+
